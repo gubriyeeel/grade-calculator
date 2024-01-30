@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
+
 function App() {
   const [totalItems, setTotalItems] = useState<number>(0);
   const [score, setScore] = useState<number>(0);
@@ -44,10 +45,10 @@ function App() {
   };
 
   return (
-    <main className="flex flex-col justify-center items-center h-screen w-screen">
+    <main className="flex flex-col md:justify-center items-center justify-start h-screen w-screen p-2">
       <Card className="w-full max-w-lg flex flex-col">
         <CardHeader>
-          <CardTitle>Grade Calculator</CardTitle>
+          <CardTitle>Grade Calculator 🐐</CardTitle>
           <CardDescription>Hindi mo na kailagan mag-isip</CardDescription>
         </CardHeader>
         <CardContent>
@@ -70,11 +71,35 @@ function App() {
 
               <Button onClick={calculate}>Calculate</Button>
             </div>
-            <p className="text-3xl font-semibold text-center pt-2">
+            <p className="text-5xl font-semibold text-center pt-2">
               {result.toFixed(2)}
             </p>
           </div>
         </CardContent>
+        <CardFooter className="flex justify-center items-center">
+          <div className="mt-4 flex flex-col text-center">
+            <span className="text-sm text-foreground">@gubriyeeel</span>
+            <div className="flex gap-4 text-center">
+              <a
+                href="https://github.com/gubriyeeel"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                Github
+              </a>
+              <i>·</i>
+              <a
+                href="https://www.facebook.com/gubriyeeel/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                Facebook
+              </a>
+            </div>
+          </div>
+        </CardFooter>
       </Card>
     </main>
   );
