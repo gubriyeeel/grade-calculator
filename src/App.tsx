@@ -54,6 +54,9 @@ function App() {
         <CardContent>
           <div className="flex flex-col gap-2">
             <div className="flex flex-col gap-4 text-center flex-wrap">
+              <p className="text-5xl font-semibold text-center pb-2">
+                {result.toFixed(2)}
+              </p>
               <Input
                 type="number"
                 placeholder="Total items"
@@ -71,9 +74,6 @@ function App() {
 
               <Button onClick={calculate}>Calculate</Button>
             </div>
-            <p className="text-5xl font-semibold text-center pt-2">
-              {result.toFixed(2)}
-            </p>
           </div>
         </CardContent>
         <CardFooter className="flex justify-center items-center">
