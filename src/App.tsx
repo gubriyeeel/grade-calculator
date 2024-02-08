@@ -28,13 +28,13 @@ function App() {
       setResult(calculatedResult);
 
       if (calculatedResult >= 75) {
-        toast.success("Congrats, 'tol!");
+        toast.success("Passed");
       } else {
-        toast.error("Sorry, bawi na lang!");
+        toast.error("Failed");
       }
     } else {
       setResult(0.0);
-      toast.error("Check mo input, baka may kulang.");
+      toast.error("Something went wrong. Please check your input values.");
     }
   };
 
@@ -49,7 +49,7 @@ function App() {
       <Card className="w-full max-w-lg flex flex-col">
         <CardHeader>
           <CardTitle>Grade Calculator 🐐</CardTitle>
-          <CardDescription>Hindi mo na kailagan mag-isip</CardDescription>
+          <CardDescription>Get your grade percentage with this calculator</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col gap-2">
