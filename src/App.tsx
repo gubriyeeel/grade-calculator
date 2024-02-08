@@ -12,19 +12,25 @@ import { Button } from "@/components/ui/button";
 
 import { useState } from "react";
 import toast from "react-hot-toast";
-
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./components/ui/tooltip";
 
 function App() {
   const [totalItems, setTotalItems] = useState<number>(0);
   const [score, setScore] = useState<number>(0);
   const [result, setResult] = useState<number>(0.0);
+  const [base, setBase] = useState<number>(0);
 
   const calculate = () => {
     const isValidInput =
       !isNaN(totalItems) && !isNaN(score) && totalItems !== 0;
 
     if (isValidInput) {
-      const calculatedResult = (score / totalItems) * 60 + 40;
+      const calculatedResult = (score / totalItems) * base + 40;
       setResult(calculatedResult);
 
       if (calculatedResult >= 75) {
@@ -49,7 +55,9 @@ function App() {
       <Card className="w-full max-w-lg flex flex-col">
         <CardHeader>
           <CardTitle>Grade Calculator 🐐</CardTitle>
-          <CardDescription>Get your grade percentage with this calculator</CardDescription>
+          <CardDescription>
+            Get your grade percentage with this calculator
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col gap-2">
@@ -71,6 +79,28 @@ function App() {
                 onChange={(e) => setScore(e.target.valueAsNumber)}
                 onKeyDown={handleKeyDown}
               />
+              <div className="flex flex-col gap-1 cursor-pointer">
+                <Input
+                  type="number"
+                  placeholder="Base"
+                  className="w-full"
+                  onChange={(e) => setBase(e.target.valueAsNumber)}
+                  onKeyDown={handleKeyDown}
+                  defaultValue={60}
+                />
+                <TooltipProvider delayDuration={0} >
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <p className="text-left text-[12px] text-muted-foreground">
+                        What is base?
+                      </p>
+                    </TooltipTrigger>
+                    <TooltipContent align="start">
+                      <p>Base is the lowest grade you can get. Change accordingly to your grading system.</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
 
               <Button onClick={calculate}>Calculate</Button>
             </div>
