@@ -76,8 +76,9 @@ const AverageCalculator = () => {
                 onChange={(e) => handleChange(index, e.target.value)}
                 placeholder="Grade"
               />
-              <X className="h-4 w-4 cursor-pointer"
+              <X className="h-4 w-4 cursor-pointer hover:scale-110"
                 onClick={() => deleteGrade(index)}
+                color="#9CA3AF"
               />
             </div>
           ))}
