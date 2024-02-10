@@ -68,18 +68,24 @@ const AverageCalculator = () => {
         <div className="text-center">
           <p className="text-6xl font-semibold pb-2">{calculateAverage()}</p>
         </div>
-        <div className="flex flex-col gap-2 pb-4">
+        <div className="flex flex-col gap-4 pb-4">
           {grades.map((_, index) => (
-            <div key={index} className="flex flex-row justify-between items-center gap-4">
+            <div
+              key={index}
+              className="flex flex-row justify-between items-center gap-4"
+            >
               <Input
                 type="number"
                 onChange={(e) => handleChange(index, e.target.value)}
                 placeholder="Grade"
               />
-              <X className="h-4 w-4 cursor-pointer hover:scale-110"
-                onClick={() => deleteGrade(index)}
-                color="#9CA3AF"
-              />
+              {index === grades.length - 1 && (
+                <X
+                  className="h-6 w-6 cursor-pointer hover:scale-110"
+                  onClick={() => deleteGrade(index)}
+                  color="#9CA3AF"
+                />
+              )}
             </div>
           ))}
         </div>
