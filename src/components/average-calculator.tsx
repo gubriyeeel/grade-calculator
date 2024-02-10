@@ -56,6 +56,12 @@ const AverageCalculator = () => {
     setGrades(newGrades);
   }
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      addGrade();
+    }
+  };
+
   return (
     <Card className="w-full max-w-sm flex flex-col">
       <CardHeader>
@@ -75,6 +81,7 @@ const AverageCalculator = () => {
                 type="number"
                 onChange={(e) => handleChange(index, e.target.value)}
                 placeholder="Grade"
+                onKeyDown={handleKeyDown}
               />
               <X className="h-4 w-4 cursor-pointer hover:scale-110"
                 onClick={() => deleteGrade(index)}
