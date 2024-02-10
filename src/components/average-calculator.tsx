@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Plus, RotateCcw } from "lucide-react";
+import { Plus, RotateCcw, X } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -15,8 +15,15 @@ const AverageCalculator = () => {
   const [grades, setGrades] = useState([0]);
 
   const calculateAverage = () => {
-    const sum = grades.reduce((a, b) => a + b, 0);
-    return (sum / grades.length || 0).toFixed(2);
+    const validGrades = grades.filter((grade) => grade !== 0);
+
+    if (validGrades.length === 0) {
+      return "0.00";
+    }
+
+    const sum = validGrades.reduce((a, b) => a + b, 0);
+
+    return (sum / validGrades.length).toFixed(2);
   };
 
   const addGrade = () => {
@@ -38,6 +45,17 @@ const AverageCalculator = () => {
     setGrades(newGrades);
   };
 
+  const deleteGrade = (index: number) => {
+    const newGrades = [...grades];
+
+    if (newGrades.length === 1) {
+      return;
+    }
+
+    newGrades.splice(index, 1);
+    setGrades(newGrades);
+  }
+
   return (
     <Card className="w-full max-w-sm flex flex-col">
       <CardHeader>
@@ -50,13 +68,16 @@ const AverageCalculator = () => {
         <div className="text-center">
           <p className="text-6xl font-semibold pb-2">{calculateAverage()}</p>
         </div>
-        <div className="flex flex-col gap-4 pb-4">
+        <div className="flex flex-col gap-2 pb-4">
           {grades.map((_, index) => (
-            <div key={index}>
+            <div key={index} className="flex flex-row justify-between items-center gap-4">
               <Input
                 type="number"
                 onChange={(e) => handleChange(index, e.target.value)}
                 placeholder="Grade"
+              />
+              <X className="h-4 w-4 cursor-pointer"
+                onClick={() => deleteGrade(index)}
               />
             </div>
           ))}
