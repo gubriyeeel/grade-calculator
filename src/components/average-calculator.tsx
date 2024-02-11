@@ -81,7 +81,7 @@ const AverageCalculator = () => {
               />
               {index === grades.length - 1 && grades.length > 1 && (
                 <X
-                  className="h-6 w-6 cursor-pointer hover:scale-110"
+                  className="h-6 w-6 cursor-pointer hover:scale-105"
                   onClick={() => deleteGrade(index)}
                   color="#9CA3AF"
                 />
