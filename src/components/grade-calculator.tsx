@@ -1,21 +1,15 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { useState } from "react";
+import toast from "react-hot-toast";
+
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-
-import { useState } from "react";
-import toast from "react-hot-toast";
 
 const GradeCalculator = () => {
   const [totalItems, setTotalItems] = useState<number>(0);
@@ -49,19 +43,14 @@ const GradeCalculator = () => {
   };
 
   return (
-    <Card className="w-full max-w-sm flex flex-col">
+    <Card className="w-full flex flex-col">
       <CardHeader>
         <CardTitle>Grade Calculator</CardTitle>
-        <CardDescription>
-          Get your grade percentage with this calculator
-        </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-2">
           <div className="flex flex-col gap-4 text-center">
-            <p className="text-6xl font-semibold pb-2">
-              {result.toFixed(2)}
-            </p>
+            <p className="text-6xl font-semibold pb-2">{result.toFixed(2)}</p>
             <Input
               type="number"
               placeholder="Total items"
